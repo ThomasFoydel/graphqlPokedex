@@ -23,7 +23,7 @@ export function reducer(state, action) {
 
 export default function Store(props) {
   const stateHook = React.useReducer(reducer, {
-    currentPokemonNumber: '',
+    currentPokemonNumber: null,
   });
 
   return <CTX.Provider value={stateHook}>{props.children}</CTX.Provider>;

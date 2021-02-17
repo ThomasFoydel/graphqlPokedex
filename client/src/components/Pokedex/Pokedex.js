@@ -31,11 +31,9 @@ export default function Pokedex({ pokemonData, pokemonList }) {
 
   return (
     <div className='pokedex'>
-      <div className='pokedex-prevnext-buttons'>
+      <div className='prevnext-buttons'>
         <button
-          className={`pokedex-prevnext-button ${
-            !prevPokemon && 'inactivebutton'
-          }`}
+          className={`prevnext-button ${!prevPokemon && 'inactivebutton'}`}
           onClick={() => {
             if (prevPokemon) {
               updateState({
@@ -51,9 +49,7 @@ export default function Pokedex({ pokemonData, pokemonList }) {
         </button>
 
         <button
-          className={`pokedex-prevnext-button ${
-            !nextPokemon && 'inactivebutton'
-          }`}
+          className={`prevnext-button ${!nextPokemon && 'inactivebutton'}`}
           onClick={() => {
             if (nextPokemon) {
               updateState({
@@ -69,25 +65,24 @@ export default function Pokedex({ pokemonData, pokemonList }) {
         </button>
       </div>
       <i
-        className='fas fa-2x fa-times pokedex-close-button'
+        className='fas fa-2x fa-times close-button'
         onClick={() => updateState({ type: 'CLEAR_CURRENT_POKEMON' })}
       ></i>
-      <h1 className='pokedex-name'>{name}</h1>
-      <div className='pokedex-spritebackground' />
+      <h1 className='name'>{name}</h1>
+      <div className='spritebackground' />
       {id && <PokemonSprite pokemonNumber={Number(id) - 1} name={name} />}
-      <p className='pokedex-classification'>{classification}</p>
-      <div className='pokedex-infobox'>
-        {types && (
-          <div className='pokedex-types'>
-            <b>{types.length > 1 ? `Types:` : `Type:`} </b>
-            {types.map((type, i) => (
+      <p className='classification'>{classification}</p>
+      <div className='infobox'>
+        <div className='types'>
+          <b>{types && types.length > 1 ? `Types:` : `Type:`} </b>
+          {types &&
+            types.map((type, i) => (
               <span key={i}>
                 {type}
                 {i < types.length - 1 ? ', ' : ''}
               </span>
             ))}
-          </div>
-        )}
+        </div>
 
         {/* {attacks.fast && (
           <div>
@@ -113,29 +108,27 @@ export default function Pokedex({ pokemonData, pokemonList }) {
           </div>
         )} */}
 
-        {resistant && (
-          <div>
-            <b>Resistant To:</b>{' '}
-            {resistant.map((individualResistance, i) => (
+        <div>
+          <b>Resistant To:</b>{' '}
+          {resistant &&
+            resistant.map((individualResistance, i) => (
               <span key={i}>
                 {individualResistance}
                 {i < resistant.length - 1 ? ', ' : ''}
               </span>
             ))}
-          </div>
-        )}
+        </div>
 
-        {weaknesses && (
-          <div>
-            <b>Weaknesses:</b>{' '}
-            {weaknesses.map((weakness, i) => (
+        <div>
+          <b>Weaknesses:</b>{' '}
+          {weaknesses &&
+            weaknesses.map((weakness, i) => (
               <span key={i}>
                 {weakness}
                 {i < weaknesses.length - 1 ? ', ' : ''}
               </span>
             ))}
-          </div>
-        )}
+        </div>
 
         <p>
           <b>Max HP:</b> {maxHP}
@@ -149,16 +142,13 @@ export default function Pokedex({ pokemonData, pokemonList }) {
           <b>Flee Rate:</b> {fleeRate}
         </p>
 
-        {weight && (
-          <p>
-            <b>Weight:</b> {weight.minimum} - {weight.maximum}
-          </p>
-        )}
-        {height && (
-          <p>
-            <b>Height:</b> {height.minimum} - {height.maximum}
-          </p>
-        )}
+        <p>
+          <b>Weight:</b> {weight && weight.minimum} - {weight && weight.maximum}
+        </p>
+
+        <p>
+          <b>Height:</b> {height && height.minimum} - {height && height.maximum}
+        </p>
 
         {evolutionRequirements && (
           <p>
@@ -167,12 +157,12 @@ export default function Pokedex({ pokemonData, pokemonList }) {
           </p>
         )}
       </div>
-      <div className='pokedex-evolutions'>
+      <div className='evolutions'>
         {evolutions ? (
           evolutions.map((evolution, i) => (
             <div
               key={i}
-              className='pokedex-evolution'
+              className='evolution'
               onClick={() =>
                 updateState({
                   type: 'CHANGE_CURRENT_POKEMON',
@@ -182,16 +172,16 @@ export default function Pokedex({ pokemonData, pokemonList }) {
                 })
               }
             >
-              <p className='pokedex-evolution-name'>{evolution.name}</p>
+              <p className='evolution-name'>{evolution.name}</p>
               <img
                 alt={`${evolution.name} sprite`}
-                className='pokedex-evolution-sprite'
+                className='evolution-sprite'
                 src={spritesArray[Number(evolution.id) - 1]}
               />
             </div>
           ))
         ) : (
-          <p className='pokedex-finalevolution'>Final Evolution</p>
+          <p className='finalevolution'>Final Evolution</p>
         )}
       </div>
     </div>
