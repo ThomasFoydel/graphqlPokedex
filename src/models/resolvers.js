@@ -2,17 +2,7 @@ import data from '../db/data.json';
 
 export const resolvers = {
   Query: {
-    pokemons: async () => {
-      return data;
-    },
-    pokemon: async (_, { id }) => {
-      return data[id - 1];
-    },
-  },
-  Mutation: {
-    getPokemon: async (_, { id }) => {
-      id = Number(id);
-      return data[id - 1];
-    },
+    pokemons: () => data, // gotta catch 'em all
+    pokemon: (_, { id }) => data[id - 1], // get one pokemon by id
   },
 };
