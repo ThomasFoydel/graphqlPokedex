@@ -103,6 +103,7 @@ export default function PokedexContainer({ pokemonList }) {
     position: 'absolute',
     zIndex: 8,
     marginLeft: '50%',
+    opacity: appState.currentPokemonNumber ? 1 : 0,
     transform: appState.currentPokemonNumber
       ? 'translateX(-50%)'
       : 'translateX(-290%)',

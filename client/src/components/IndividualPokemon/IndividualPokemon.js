@@ -23,39 +23,53 @@ export default function IndividualPokemon({ pokemon }) {
   });
 
   return (
-    <div
-      style={{ width: '100%', zIndex: hover ? 20 : 1 }}
-      onMouseOver={() => setHover(true)}
-      onMouseOut={() => setHover(false)}
+    <animated.div
+      style={{
+        ...animationProps,
+        width: '100%',
+        position: 'relative',
+      }}
+      className='pokemon-card'
+      onClick={() => {
+        updateState({
+          type: 'CHANGE_CURRENT_POKEMON',
+          payload: {
+            currentPokemonNumber: id,
+          },
+        });
+      }}
+      id='pokecard'
     >
-      <animated.div
-        style={animationProps}
-        className='pokemon-card'
-        onClick={() => {
-          updateState({
-            type: 'CHANGE_CURRENT_POKEMON',
-            payload: {
-              currentPokemonNumber: id,
-            },
-          });
+      <h1
+        className='pokemon-card-name'
+        style={{
+          transition: 'all 0.3s ease',
+          letterSpacing: hover ? '0.7rem' : '0.3rem',
         }}
       >
-        <h1
-          className='pokemon-card-name'
-          style={{
-            transition: 'all 0.3s ease',
-            letterSpacing: hover ? '0.7rem' : '0.3rem',
-          }}
-        >
-          {name}
-        </h1>
+        {name}
+      </h1>
 
-        <img
-          className='pokemon-card-image'
-          src={spritesArray[pokemonIndex - 1]}
-          alt={`${name} sprite`}
-        />
-      </animated.div>
-    </div>
+      <img
+        className='pokemon-card-image'
+        src={spritesArray[pokemonIndex - 1]}
+        alt={`${name} sprite`}
+      />
+      <div
+        className='hover'
+        style={{
+          position: 'absolute',
+          left: '0',
+          top: '0',
+          width: '100%',
+          height: '100%',
+          zIndex: '1',
+        }}
+        onMouseEnter={() => setHover(true)}
+        onMouseOut={(event) => {
+          setHover(false);
+        }}
+      />
+    </animated.div>
   );
 }

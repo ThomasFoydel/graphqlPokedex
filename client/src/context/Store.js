@@ -7,13 +7,14 @@ const CTX = React.createContext();
 export { CTX };
 
 let currentInfo;
-let open = new Audio(fx[0]);
-open.volume = 0.3;
+
 let close = new Audio(fx[1]);
 
 export function reducer(state, action) {
   switch (action.type) {
     case 'CHANGE_CURRENT_POKEMON':
+      let open = new Audio(fx[0]);
+      open.volume = 0.3;
       open.play();
       if (currentInfo) currentInfo.pause();
       currentInfo = new Audio(info[action.payload.currentPokemonNumber - 1]);
