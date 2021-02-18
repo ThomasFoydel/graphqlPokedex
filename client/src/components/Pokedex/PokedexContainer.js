@@ -16,7 +16,7 @@ const makePokeQuery = (id) => {
       types
       resistant
       weaknesses
-      maxCp
+      maxCP
       maxHP
       weight {
         minimum

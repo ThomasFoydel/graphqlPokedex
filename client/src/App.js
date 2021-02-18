@@ -24,7 +24,6 @@ function App() {
   let audioRef = useRef();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     // if (audioRef.current) audioRef.current.play();
   }, []);
 

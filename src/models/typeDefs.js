@@ -26,7 +26,7 @@ export const typeDefs = gql`
     attacks: PokemonAttack
     weaknesses: [String]
     fleeRate: Float
-    maxCp: Int
+    maxCP: Int
     evolutions: [Pokemon]
     previousEvolutions: [Pokemon]
     evolutionRequirements: PokemonEvolutionRequirement
