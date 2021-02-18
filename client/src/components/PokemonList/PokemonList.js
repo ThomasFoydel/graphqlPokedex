@@ -35,16 +35,6 @@ export default function PokemonList({ pokemonList }) {
   return (
     <div className='pokemon-list-container'>
       <div className='pokemon-list'>
-        {/* {pokemonList.map(pokemon=>{
-          return (
-            <IndividualPokemon
-              key={pokemon.id}
-              pokemon={pokemon}
-              nextPokemon={nextPokemon}
-              prevPokemon={prevPokemon}
-            />
-          );
-        })} */}
         {transitions.map(({ item, props, key }) => (
           <animated.div key={key} style={props}>
             {item}

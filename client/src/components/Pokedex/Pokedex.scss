@@ -10,6 +10,12 @@
     -1rem -1rem 6rem rgba(255, 255, 255, 0.12);
 }
 
+.loading-info {
+  width: 20rem;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
 .pokedex {
   z-index: 3;
   background: red;

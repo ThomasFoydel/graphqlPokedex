@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import PokemonSprite from 'components/Pokedex/PokemonSprite';
 import spritesArray from '../../imgs/sprites/index';
-
+import loadingSpinner from 'imgs/loading/pokeball.gif';
 import { CTX } from 'context/Store';
 import './Pokedex.scss';
 
-export default function Pokedex({ pokemonData, pokemonList }) {
-  const [appState, updateState] = useContext(CTX);
+export default function Pokedex({ pokemonData, pokemonList, loading }) {
+  const [, updateState] = useContext(CTX);
 
   const {
     name,
@@ -73,90 +73,103 @@ export default function Pokedex({ pokemonData, pokemonList }) {
       {id && <PokemonSprite pokemonNumber={Number(id) - 1} name={name} />}
       <p className='classification'>{classification}</p>
       <div className='infobox'>
-        <div className='types'>
-          <b>{types && types.length > 1 ? `Types:` : `Type:`} </b>
-          {types &&
-            types.map((type, i) => (
-              <span key={i}>
-                {type}
-                {i < types.length - 1 ? ', ' : ''}
-              </span>
-            ))}
-        </div>
+        {loading ? (
+          <img
+            src={loadingSpinner}
+            className='loading-info'
+            alt='loading prokemon data...'
+          />
+        ) : (
+          <>
+            <div className='types'>
+              <b>{types && types.length > 1 ? `Types:` : `Type:`} </b>
+              {types &&
+                types.map((type, i) => (
+                  <span key={i}>
+                    {type}
+                    {i < types.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+            </div>
 
-        {attacks?.fast && (
-          <div>
-            <b>Fast Attacks:</b>{' '}
-            {attacks.fast.map((attack, i) => (
-              <span key={i}>
-                {attack.name}
-                {i < attacks.fast.length - 1 ? ', ' : ''}
-              </span>
-            ))}
-          </div>
-        )}
+            {attacks?.fast && (
+              <div>
+                <b>Fast Attacks:</b>{' '}
+                {attacks.fast.map((attack, i) => (
+                  <span key={i}>
+                    {attack.name}
+                    {i < attacks.fast.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+              </div>
+            )}
 
-        {attacks?.special && (
-          <div>
-            <b>Special Attacks:</b>{' '}
-            {attacks.special.map((attack, i) => (
-              <span key={i}>
-                {attack.name}
-                {i < attacks.special.length - 1 ? ', ' : ''}
-              </span>
-            ))}
-          </div>
-        )}
+            {attacks?.special && (
+              <div>
+                <b>Special Attacks:</b>{' '}
+                {attacks.special.map((attack, i) => (
+                  <span key={i}>
+                    {attack.name}
+                    {i < attacks.special.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+              </div>
+            )}
 
-        <div>
-          <b>Resistant To:</b>{' '}
-          {resistant &&
-            resistant.map((individualResistance, i) => (
-              <span key={i}>
-                {individualResistance}
-                {i < resistant.length - 1 ? ', ' : ''}
-              </span>
-            ))}
-        </div>
+            <div>
+              <b>Resistant To:</b>{' '}
+              {resistant &&
+                resistant.map((individualResistance, i) => (
+                  <span key={i}>
+                    {individualResistance}
+                    {i < resistant.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+            </div>
 
-        <div>
-          <b>Weaknesses:</b>{' '}
-          {weaknesses &&
-            weaknesses.map((weakness, i) => (
-              <span key={i}>
-                {weakness}
-                {i < weaknesses.length - 1 ? ', ' : ''}
-              </span>
-            ))}
-        </div>
+            <div>
+              <b>Weaknesses:</b>{' '}
+              {weaknesses &&
+                weaknesses.map((weakness, i) => (
+                  <span key={i}>
+                    {weakness}
+                    {i < weaknesses.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+            </div>
 
-        <p>
-          <b>Max HP:</b> {maxHP}
-        </p>
+            <p>
+              <b>Max HP:</b> {maxHP}
+            </p>
 
-        <p>
-          <b>Max CP:</b> {maxCP}
-        </p>
+            <p>
+              <b>Max CP:</b> {maxCP}
+            </p>
 
-        <p>
-          <b>Flee Rate:</b> {fleeRate}
-        </p>
+            <p>
+              <b>Flee Rate:</b> {fleeRate}
+            </p>
 
-        <p>
-          <b>Weight:</b> {weight && weight.minimum} - {weight && weight.maximum}
-        </p>
+            <p>
+              <b>Weight:</b> {weight && weight.minimum} -{' '}
+              {weight && weight.maximum}
+            </p>
 
-        <p>
-          <b>Height:</b> {height && height.minimum} - {height && height.maximum}
-        </p>
+            <p>
+              <b>Height:</b> {height && height.minimum} -{' '}
+              {height && height.maximum}
+            </p>
 
-        {evolutionRequirements && (
-          <p>
-            <b>Evolution Requirements:</b> {evolutionRequirements.amount}{' '}
-            {evolutionRequirements.name}
-          </p>
+            {evolutionRequirements && (
+              <p>
+                <b>Evolution Requirements:</b> {evolutionRequirements.amount}{' '}
+                {evolutionRequirements.name}
+              </p>
+            )}
+          </>
         )}
       </div>
+
       {pokemonData && (
         <div className='evolutions'>
           {evolutions ? (

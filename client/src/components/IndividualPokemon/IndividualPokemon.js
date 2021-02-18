@@ -56,15 +56,15 @@ export default function IndividualPokemon({ pokemon }) {
         alt={`${name} sprite`}
       />
       <div
-        className='hover'
-        style={{
-          position: 'absolute',
-          left: '0',
-          top: '0',
-          width: '100%',
-          height: '100%',
-          zIndex: '1',
-        }}
+        className='hover-el'
+        // style={{
+        //   position: 'absolute',
+        //   left: '0',
+        //   top: '0',
+        //   width: '100%',
+        //   height: '100%',
+        //   zIndex: '1',
+        // }}
         onMouseEnter={() => setHover(true)}
         onMouseOut={(event) => {
           setHover(false);
