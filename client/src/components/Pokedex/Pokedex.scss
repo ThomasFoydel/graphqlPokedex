@@ -5,6 +5,11 @@
   left: 0;
 }
 
+.pokedex-spring {
+  box-shadow: 2rem 2rem 6rem rgba(0, 0, 0, 0.45),
+    -1rem -1rem 6rem rgba(255, 255, 255, 0.12);
+}
+
 .pokedex {
   z-index: 3;
   background: red;
@@ -14,10 +19,21 @@
   width: 46rem;
   padding: 0.5rem;
   overflow: hidden;
-  border-radius: 2px;
-  box-shadow: 2rem 2rem 6rem rgba(0, 0, 0, 0.45),
-    -1rem -1rem 6rem rgba(255, 255, 255, 0.12);
-
+  clip-path: polygon(
+    3% 11%,
+    0 9%,
+    0 0,
+    100% 0,
+    100% 15%,
+    98% 18%,
+    98% 78%,
+    100% 82%,
+    100% 100%,
+    0 100%,
+    0 50%,
+    3% 47%
+  );
+  border-radius: 5px 5px 0 5px;
   .prevnext-buttons {
     position: absolute;
     left: 3.8rem;
@@ -55,6 +71,14 @@
   }
 
   .close-button {
+    background: rgba(255, 255, 255, 0.144);
+    box-shadow: 0.1rem 0.2rem 0.3rem rgba(0, 0, 0, 0.2);
+    border-radius: 100rem;
+    width: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.5rem;
     position: absolute;
     right: 1.6rem;
     top: 1.4rem;
@@ -111,14 +135,15 @@
 
   .evolutions {
     display: flex;
-    float: right;
+    right: 0;
+    position: absolute;
     margin-top: 0.5rem;
   }
 
   .evolution {
     cursor: pointer;
     width: 8.5rem;
-    padding: 0 2rem;
+    // padding: 0 2rem;
     &:hover {
       background: rgba(255, 255, 255, 0.276);
     }

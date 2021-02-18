@@ -84,7 +84,7 @@ export default function Pokedex({ pokemonData, pokemonList }) {
             ))}
         </div>
 
-        {/* {attacks.fast && (
+        {attacks?.fast && (
           <div>
             <b>Fast Attacks:</b>{' '}
             {attacks.fast.map((attack, i) => (
@@ -94,9 +94,9 @@ export default function Pokedex({ pokemonData, pokemonList }) {
               </span>
             ))}
           </div>
-        )} */}
+        )}
 
-        {/* {attacks.special && (
+        {attacks?.special && (
           <div>
             <b>Special Attacks:</b>{' '}
             {attacks.special.map((attack, i) => (
@@ -106,7 +106,7 @@ export default function Pokedex({ pokemonData, pokemonList }) {
               </span>
             ))}
           </div>
-        )} */}
+        )}
 
         <div>
           <b>Resistant To:</b>{' '}
@@ -157,33 +157,35 @@ export default function Pokedex({ pokemonData, pokemonList }) {
           </p>
         )}
       </div>
-      <div className='evolutions'>
-        {evolutions ? (
-          evolutions.map((evolution, i) => (
-            <div
-              key={i}
-              className='evolution'
-              onClick={() =>
-                updateState({
-                  type: 'CHANGE_CURRENT_POKEMON',
-                  payload: {
-                    currentPokemonNumber: evolution.id,
-                  },
-                })
-              }
-            >
-              <p className='evolution-name'>{evolution.name}</p>
-              <img
-                alt={`${evolution.name} sprite`}
-                className='evolution-sprite'
-                src={spritesArray[Number(evolution.id) - 1]}
-              />
-            </div>
-          ))
-        ) : (
-          <p className='finalevolution'>Final Evolution</p>
-        )}
-      </div>
+      {pokemonData && (
+        <div className='evolutions'>
+          {evolutions ? (
+            evolutions.map((evolution, i) => (
+              <div
+                key={i}
+                className='evolution'
+                onClick={() =>
+                  updateState({
+                    type: 'CHANGE_CURRENT_POKEMON',
+                    payload: {
+                      currentPokemonNumber: evolution.id,
+                    },
+                  })
+                }
+              >
+                <p className='evolution-name'>{evolution.name}</p>
+                <img
+                  alt={`${evolution.name} sprite`}
+                  className='evolution-sprite'
+                  src={spritesArray[Number(evolution.id) - 1]}
+                />
+              </div>
+            ))
+          ) : (
+            <p className='finalevolution'>Final Evolution</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

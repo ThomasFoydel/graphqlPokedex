@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { gql } from 'apollo-boost';
 import Pokedex from 'components/Pokedex/Pokedex';
 import { useQuery } from '@apollo/react-hooks';
-import { useSpring, animated, config } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 
 import { CTX } from 'context/Store';
 
@@ -35,18 +35,22 @@ const makePokeQuery = (id) => {
         id
         name
       }
-      # attacks {
-      #   special {
-      #     name
-      #     type
-      #     damage
-      #   }
-      #   fast {
-      #     name
-      #     type
-      #     damage
-      #   }
-      # }
+      evolutionRequirements {
+        amount
+        name
+      }
+      attacks {
+        special {
+          name
+          type
+          damage
+        }
+        fast {
+          name
+          type
+          damage
+        }
+      }
     }
   }
 `;
@@ -63,42 +67,6 @@ export default function PokedexContainer({ pokemonList }) {
     fetchedPokemon = data.pokemon;
   }
 
-  //     .query({
-  //       query: gql`{
-  //           pokemon(id: "${appState.currentPokemonLongId}") {
-  //             id
-  //             number
-  //             name
-  //             classification
-  //             types
-  //             resistant
-  //             weaknesses
-  //             fleeRate
-  //             maxCP
-  //             maxHP
-  //             image
-  //             evolutionRequirements {
-  //                 amount
-  //                 name
-  //             }
-  //
-  //             weight {
-  //                 minimum
-  //                 maximum
-  //             }
-  //             height {
-  //                 minimum
-  //                 maximum
-  //             }
-  //             evolutions {
-  //               id
-  //               number
-  //               name
-  //             }
-  //           }
-  //         }`,
-  //     })
-
   const animationProps = useSpring({
     position: 'absolute',
     zIndex: 8,
@@ -107,14 +75,17 @@ export default function PokedexContainer({ pokemonList }) {
     transform: appState.currentPokemonNumber
       ? 'translateX(-50%)'
       : 'translateX(-290%)',
-    // config: { tension: 180, friction: 12, mass: 2 },
-    // },
+    config: { tension: 180, friction: 20, mass: 1.5 },
   });
 
   return (
     <div className='pokedex-container'>
-      <animated.div style={animationProps}>
-        <Pokedex pokemonData={fetchedPokemon} pokemonList={pokemonList} />
+      <animated.div style={animationProps} className='pokedex-spring'>
+        <Pokedex
+          pokemonData={fetchedPokemon}
+          pokemonList={pokemonList}
+          loading={loading}
+        />
       </animated.div>
     </div>
   );
