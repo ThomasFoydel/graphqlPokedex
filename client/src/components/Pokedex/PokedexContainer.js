@@ -46,7 +46,7 @@ const makePokeQuery = (id) => {
       #     type
       #     damage
       #   }
-      }
+      # }
     }
   }
 `;
@@ -62,6 +62,42 @@ export default function PokedexContainer({ pokemonList }) {
   if (data && data.pokemon) {
     fetchedPokemon = data.pokemon;
   }
+
+  //     .query({
+  //       query: gql`{
+  //           pokemon(id: "${appState.currentPokemonLongId}") {
+  //             id
+  //             number
+  //             name
+  //             classification
+  //             types
+  //             resistant
+  //             weaknesses
+  //             fleeRate
+  //             maxCP
+  //             maxHP
+  //             image
+  //             evolutionRequirements {
+  //                 amount
+  //                 name
+  //             }
+  //
+  //             weight {
+  //                 minimum
+  //                 maximum
+  //             }
+  //             height {
+  //                 minimum
+  //                 maximum
+  //             }
+  //             evolutions {
+  //               id
+  //               number
+  //               name
+  //             }
+  //           }
+  //         }`,
+  //     })
 
   const animationProps = useSpring({
     position: 'absolute',
