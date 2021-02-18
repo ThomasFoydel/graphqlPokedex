@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { gql } from 'apollo-boost';
-import Pokedex from 'components/Pokedex/Pokedex';
 import { useQuery } from '@apollo/react-hooks';
 import { useSpring, animated } from 'react-spring';
+import Pokedex from 'components/Pokedex/Pokedex';
 
 import { CTX } from 'context/Store';
 

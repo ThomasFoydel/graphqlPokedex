@@ -1,6 +1,7 @@
 import React from 'react';
-import IndividualPokemon from 'components/IndividualPokemon/IndividualPokemon';
 import { useTransition, animated, config } from 'react-spring';
+import IndividualPokemon from 'components/IndividualPokemon/IndividualPokemon';
+import './PokemonList.scss';
 
 export default function PokemonList({ pokemonList }) {
   pokemonList.lenght = 10;

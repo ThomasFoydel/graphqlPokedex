@@ -3,21 +3,22 @@ import App from './App.js';
 import unopenedPokeball from 'imgs/pokeball/unopened.gif';
 import pokeball from 'imgs/pokeball/pokeball2.png';
 import fx from 'audio/fx';
+
 const AppContainer = () => {
   const [opened, setOpened] = useState(false);
   const openSound = new Audio(fx[3]);
   const [hover, setHover] = useState(false);
 
-  const openUp = () => {
+  const openUp = (event) => {
     openSound.play();
     setOpened(true);
   };
   return (
-    <div onClick={openUp}>
+    <>
       {opened ? (
         <App />
       ) : (
-        <div style={{ position: 'relative', cursor: 'pointer' }}>
+        <div style={{ height: '100vh', overflow: 'hidden' }}>
           <img
             className='unopened-pokeball'
             src={hover ? unopenedPokeball : pokeball}
@@ -27,10 +28,11 @@ const AppContainer = () => {
             className='hover-el'
             onMouseOver={() => setHover(true)}
             onMouseOut={() => setHover(false)}
+            onClick={openUp}
           />
         </div>
       )}
-    </div>
+    </>
   );
 };
 

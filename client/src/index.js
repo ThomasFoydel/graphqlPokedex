@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import AppContainer from './AppContainer';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
+
+import AppContainer from './AppContainer';
 import Store from 'context/Store';
+import './index.css';
 
 const client = new ApolloClient({
   uri:
