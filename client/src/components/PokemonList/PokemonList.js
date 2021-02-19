@@ -28,7 +28,7 @@ export default function PokemonList({ pokemonList }) {
         transform: 'translateX(200%) translateY(200%)',
       },
       enter: { opacity: 1, transform: 'translateX(0%) translateY(0)' },
-      trail: 150,
+      trail: 100,
       config: config.stiff,
     }
   );
