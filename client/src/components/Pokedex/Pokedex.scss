@@ -6,6 +6,9 @@
 }
 
 .pokedex-spring {
+  position: absolute;
+  z-index: 8;
+  margin-left: 50%;
   box-shadow: 2rem 2rem 6rem rgba(0, 0, 0, 0.45),
     -1rem -1rem 6rem rgba(255, 255, 255, 0.12);
 }
@@ -149,7 +152,6 @@
   .evolution {
     cursor: pointer;
     width: 8.5rem;
-    // padding: 0 2rem;
     &:hover {
       background: rgba(255, 255, 255, 0.276);
     }

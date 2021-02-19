@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
-import { CTX } from 'context/Store';
 import { useSpring, animated, config } from 'react-spring';
+import { CTX } from 'context/Store';
 import spritesArray from '../../imgs/sprites/index';
 import './IndividualPokemon.scss';
 
 export default function IndividualPokemon({ pokemon }) {
-  const [appState, updateState] = useContext(CTX);
+  const [, updateState] = useContext(CTX);
   const [hover, setHover] = useState(false);
-  const { name, number, id } = pokemon;
+  const { name, id } = pokemon;
   const pokemonIndex = Number(id);
 
   const animationProps = useSpring({
@@ -24,11 +24,7 @@ export default function IndividualPokemon({ pokemon }) {
 
   return (
     <animated.div
-      style={{
-        ...animationProps,
-        width: '100%',
-        position: 'relative',
-      }}
+      style={animationProps}
       className='pokemon-card'
       onClick={() => {
         updateState({
@@ -38,12 +34,10 @@ export default function IndividualPokemon({ pokemon }) {
           },
         });
       }}
-      id='pokecard'
     >
       <h1
         className='pokemon-card-name'
         style={{
-          transition: 'all 0.3s ease',
           letterSpacing: hover ? '0.7rem' : '0.3rem',
         }}
       >
@@ -57,18 +51,8 @@ export default function IndividualPokemon({ pokemon }) {
       />
       <div
         className='hover-el'
-        // style={{
-        //   position: 'absolute',
-        //   left: '0',
-        //   top: '0',
-        //   width: '100%',
-        //   height: '100%',
-        //   zIndex: '1',
-        // }}
         onMouseEnter={() => setHover(true)}
-        onMouseOut={(event) => {
-          setHover(false);
-        }}
+        onMouseOut={() => setHover(false)}
       />
     </animated.div>
   );

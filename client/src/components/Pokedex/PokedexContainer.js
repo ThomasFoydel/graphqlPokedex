@@ -17,9 +17,6 @@ export default function PokedexContainer({ pokemonList }) {
   }
 
   const animationProps = useSpring({
-    position: 'absolute',
-    zIndex: 8,
-    marginLeft: '50%',
     opacity: appState.currentPokemonNumber ? 1 : 0,
     transform: appState.currentPokemonNumber
       ? 'translateX(-50%)'
