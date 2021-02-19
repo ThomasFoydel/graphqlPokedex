@@ -6,17 +6,9 @@ import Navbar from 'components/Navbar/Navbar';
 import PokemonList from 'components/PokemonList/PokemonList';
 import PokedexContainer from 'components/Pokedex/PokedexContainer';
 import loadingPokeball from 'imgs/loading/pokeball.gif';
+import { ALL_POKEMON } from 'gql/queries';
 
 import './App.scss';
-
-const ALL_POKEMON = gql`
-  {
-    pokemons {
-      id
-      name
-    }
-  }
-`;
 
 function App() {
   const { loading, data } = useQuery(ALL_POKEMON);

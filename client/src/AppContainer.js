@@ -6,7 +6,7 @@ import fx from 'audio/fx';
 
 const AppContainer = () => {
   const [opened, setOpened] = useState(false);
-  const openSound = new Audio(fx[3]);
+  const openSound = new Audio(fx[2]);
   const [hover, setHover] = useState(false);
 
   const openUp = (event) => {

@@ -1,60 +1,9 @@
 import React, { useContext } from 'react';
-import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import { useSpring, animated } from 'react-spring';
 import Pokedex from 'components/Pokedex/Pokedex';
-
+import { makePokeQuery } from 'gql/queries';
 import { CTX } from 'context/Store';
-
-const makePokeQuery = (id) => {
-  return gql`
-  {
-     pokemon(id: "${id}") {
-      id
-      name
-      classification
-      types
-      resistant
-      weaknesses
-      maxCP
-      maxHP
-      weight {
-        minimum
-        maximum
-      }
-      height {
-        minimum
-        maximum
-      }
-      fleeRate
-      evolutions {
-        id
-        name
-      }
-      previousEvolutions {
-        id
-        name
-      }
-      evolutionRequirements {
-        amount
-        name
-      }
-      attacks {
-        special {
-          name
-          type
-          damage
-        }
-        fast {
-          name
-          type
-          damage
-        }
-      }
-    }
-  }
-`;
-};
 
 export default function PokedexContainer({ pokemonList }) {
   const [appState] = useContext(CTX);
