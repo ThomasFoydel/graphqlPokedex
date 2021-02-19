@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import PokemonSprite from 'components/Pokedex/PokemonSprite';
 import spritesArray from '../../imgs/sprites/index';
-import loadingSpinner from 'imgs/loading/pokeball.gif';
 import { CTX } from 'context/Store';
 import './Pokedex.scss';
 
@@ -73,101 +72,86 @@ export default function Pokedex({ pokemonData, pokemonList, loading }) {
       {id && <PokemonSprite pokemonNumber={Number(id) - 1} name={name} />}
       <p className='classification'>{classification}</p>
       <div className='infobox'>
-        {loading ? (
-          <img
-            src={loadingSpinner}
-            className='loading-info'
-            alt='loading prokemon data...'
-          />
-        ) : (
-          <>
-            <div className='types'>
-              <b>{types && types.length > 1 ? `Types:` : `Type:`} </b>
-              {types &&
-                types.map((type, i) => (
-                  <span key={i}>
-                    {type}
-                    {i < types.length - 1 ? ', ' : ''}
-                  </span>
-                ))}
-            </div>
+        <>
+          <p>
+            <b>Max HP:</b> {maxHP}
+          </p>
 
-            {attacks?.fast && (
-              <div>
-                <b>Fast Attacks:</b>{' '}
-                {attacks.fast.map((attack, i) => (
-                  <span key={i}>
-                    {attack.name}
-                    {i < attacks.fast.length - 1 ? ', ' : ''}
-                  </span>
-                ))}
-              </div>
-            )}
+          <p>
+            <b>Max CP:</b> {maxCP}
+          </p>
 
-            {attacks?.special && (
-              <div>
-                <b>Special Attacks:</b>{' '}
-                {attacks.special.map((attack, i) => (
-                  <span key={i}>
-                    {attack.name}
-                    {i < attacks.special.length - 1 ? ', ' : ''}
-                  </span>
-                ))}
-              </div>
-            )}
+          <p>
+            <b>Flee Rate:</b> {fleeRate}
+          </p>
 
-            <div>
-              <b>Resistant To:</b>{' '}
-              {resistant &&
-                resistant.map((individualResistance, i) => (
-                  <span key={i}>
-                    {individualResistance}
-                    {i < resistant.length - 1 ? ', ' : ''}
-                  </span>
-                ))}
-            </div>
+          <p>
+            <b>Weight:</b> {weight && weight.minimum} -{' '}
+            {weight && weight.maximum}
+          </p>
 
-            <div>
-              <b>Weaknesses:</b>{' '}
-              {weaknesses &&
-                weaknesses.map((weakness, i) => (
-                  <span key={i}>
-                    {weakness}
-                    {i < weaknesses.length - 1 ? ', ' : ''}
-                  </span>
-                ))}
-            </div>
+          <p>
+            <b>Height:</b> {height && height.minimum} -{' '}
+            {height && height.maximum}
+          </p>
 
-            <p>
-              <b>Max HP:</b> {maxHP}
-            </p>
+          <div className='types'>
+            <b>{types && types.length > 1 ? `Types:` : `Type:`} </b>
+            {types?.map((type, i) => (
+              <span key={i}>
+                {type}
+                {i < types.length - 1 ? ', ' : ''}
+              </span>
+            ))}
+          </div>
 
-            <p>
-              <b>Max CP:</b> {maxCP}
-            </p>
+          <div>
+            <b>Resistant To:</b>{' '}
+            {resistant?.map((individualResistance, i) => (
+              <span key={i}>
+                {individualResistance}
+                {i < resistant.length - 1 ? ', ' : ''}
+              </span>
+            ))}
+          </div>
 
-            <p>
-              <b>Flee Rate:</b> {fleeRate}
-            </p>
+          <div>
+            <b>Weaknesses:</b>{' '}
+            {weaknesses &&
+              weaknesses.map((weakness, i) => (
+                <span key={i}>
+                  {weakness}
+                  {i < weaknesses.length - 1 ? ', ' : ''}
+                </span>
+              ))}
+          </div>
 
-            <p>
-              <b>Weight:</b> {weight && weight.minimum} -{' '}
-              {weight && weight.maximum}
-            </p>
+          <div>
+            <b>Fast Attacks:</b>{' '}
+            {attacks?.fast.map((attack, i) => (
+              <span key={i}>
+                {attack.name}
+                {i < attacks.fast.length - 1 ? ', ' : ''}
+              </span>
+            ))}
+          </div>
 
-            <p>
-              <b>Height:</b> {height && height.minimum} -{' '}
-              {height && height.maximum}
-            </p>
+          <div>
+            <b>Special Attacks:</b>{' '}
+            {attacks?.special.map((attack, i) => (
+              <span key={i}>
+                {attack.name}
+                {i < attacks.special.length - 1 ? ', ' : ''}
+              </span>
+            ))}
+          </div>
 
-            {evolutionRequirements && (
-              <p>
-                <b>Evolution Requirements:</b> {evolutionRequirements.amount}{' '}
-                {evolutionRequirements.name}
-              </p>
-            )}
-          </>
-        )}
+          <p>
+            <b>Evolution Requirements:</b>{' '}
+            {evolutionRequirements &&
+              `${evolutionRequirements.amount} ${evolutionRequirements.name}`}
+          </p>
+        </>
       </div>
 
       {pokemonData && (

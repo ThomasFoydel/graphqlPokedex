@@ -5,7 +5,6 @@ import { ApolloProvider } from '@apollo/react-hooks';
 
 import AppContainer from './AppContainer';
 import Store from 'context/Store';
-import './index.css';
 
 const client = new ApolloClient({
   uri:

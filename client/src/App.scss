@@ -1,4 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@300;400;700&display=swap');
+@font-face {
+  font-family: 'Tomorrow';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Tomorrow'), url(./fonts/Tomorrow-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Tomorrow';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Tomorrow'), url(./fonts/Tomorrow-Bold.ttf) format('truetype');
+}
+
+// @import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;700&display=swap');
 *,
 *::after,
 *::before {
@@ -20,11 +33,13 @@ html {
 }
 
 body {
-  font-family: 'Tomorrow', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.7;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Tomorrow';
 }
 
 button:focus,

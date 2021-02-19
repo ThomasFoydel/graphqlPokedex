@@ -6,10 +6,10 @@ export default function Navbar() {
     <div className='navbar'>
       <div className='navbar-left'>
         <img className='navbar-pokeball' src={pokeball} alt='pokeball' />
-        <h1 className='navbar-item'>graphql pokedex</h1>
+        <h1 className='navbar-item'>pokedex</h1>
       </div>
       <div className='navbar-portfoliolink'>
-        by Thomas Foydel 2020{' '}
+        by Thomas Foydel 2021{' '}
         <a href='https://thomasfoydel.com'>back to my portfolio</a>
       </div>
     </div>
