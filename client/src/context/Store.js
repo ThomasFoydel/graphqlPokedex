@@ -2,13 +2,11 @@ import React from 'react';
 import info from 'audio/info';
 import fx from 'audio/fx';
 
-const CTX = React.createContext();
-
-export { CTX };
+export const CTX = React.createContext();
 
 let currentInfo;
-
 let close = new Audio(fx[1]);
+close.volume = 0.5;
 
 export function reducer(state, action) {
   switch (action.type) {
@@ -23,6 +21,7 @@ export function reducer(state, action) {
         ...state,
         currentPokemonNumber: action.payload.currentPokemonNumber,
       };
+
     case 'CLEAR_CURRENT_POKEMON':
       currentInfo.pause();
       close.time = 0;
@@ -32,15 +31,15 @@ export function reducer(state, action) {
         currentPokemonNumber: '',
         info: null,
       };
+
     default:
-      throw Error('reducer error');
+      throw Error('Reducer error... STATE: ', state, 'ACTION: ', action);
   }
 }
 
 export default function Store(props) {
   const stateHook = React.useReducer(reducer, {
     currentPokemonNumber: null,
-    info: new Audio(info[0]),
   });
 
   return <CTX.Provider value={stateHook}>{props.children}</CTX.Provider>;

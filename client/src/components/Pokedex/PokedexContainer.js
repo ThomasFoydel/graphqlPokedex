@@ -1,16 +1,15 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { useSpring, animated } from 'react-spring';
+
 import Pokedex from 'components/Pokedex/Pokedex';
-import { makePokeQuery } from 'gql/queries';
+import { makeSinglePokeQuery } from 'gql/queries';
 import { CTX } from 'context/Store';
 
 export default function PokedexContainer({ pokemonList }) {
   const [appState] = useContext(CTX);
 
-  const { loading, data } = useQuery(
-    makePokeQuery(appState.currentPokemonNumber)
-  );
+  const { data } = useQuery(makeSinglePokeQuery(appState.currentPokemonNumber));
   let fetchedPokemon;
   if (data && data.pokemon) {
     fetchedPokemon = data.pokemon;
@@ -27,11 +26,7 @@ export default function PokedexContainer({ pokemonList }) {
   return (
     <div className='pokedex-container'>
       <animated.div style={animationProps} className='pokedex-spring'>
-        <Pokedex
-          pokemonData={fetchedPokemon}
-          pokemonList={pokemonList}
-          loading={loading}
-        />
+        <Pokedex props={{ pokemonData: fetchedPokemon, pokemonList }} />
       </animated.div>
     </div>
   );

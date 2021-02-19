@@ -4,7 +4,7 @@ import spritesArray from '../../imgs/sprites/index';
 import { CTX } from 'context/Store';
 import './Pokedex.scss';
 
-export default function Pokedex({ pokemonData, pokemonList, loading }) {
+export default function Pokedex({ props: { pokemonData, pokemonList } }) {
   const [, updateState] = useContext(CTX);
 
   const {
@@ -146,11 +146,12 @@ export default function Pokedex({ pokemonData, pokemonList, loading }) {
             ))}
           </div>
 
-          <p>
-            <b>Evolution Requirements:</b>{' '}
-            {evolutionRequirements &&
-              `${evolutionRequirements.amount} ${evolutionRequirements.name}`}
-          </p>
+          {evolutionRequirements && (
+            <p>
+              <b>Evolution Requirements:</b>{' '}
+              {`${evolutionRequirements.amount} ${evolutionRequirements.name}`}
+            </p>
+          )}
         </>
       </div>
 

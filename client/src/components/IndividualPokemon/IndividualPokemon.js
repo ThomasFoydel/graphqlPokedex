@@ -4,7 +4,7 @@ import { CTX } from 'context/Store';
 import spritesArray from '../../imgs/sprites/index';
 import './IndividualPokemon.scss';
 
-export default function IndividualPokemon({ pokemon }) {
+export default function IndividualPokemon({ props: { pokemon } }) {
   const [, updateState] = useContext(CTX);
   const [hover, setHover] = useState(false);
   const { name, id } = pokemon;

@@ -8,7 +8,7 @@ export const ALL_POKEMON = gql`
   }
 `;
 
-export const makePokeQuery = (id) => {
+export const makeSinglePokeQuery = (id) => {
   return gql`
   {
      pokemon(id: "${id}") {

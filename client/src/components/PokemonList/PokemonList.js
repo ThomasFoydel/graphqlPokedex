@@ -5,18 +5,9 @@ import './PokemonList.scss';
 
 export default function PokemonList({ pokemonList }) {
   pokemonList.lenght = 10;
-  const mappedPokemonList = pokemonList.map((pokemon, i) => {
-    const nextPokemon = i > 1 && pokemonList[i - 1].id;
-    const prevPokemon = i < pokemonList.length - 1 && pokemonList[i + 1].id;
-    return (
-      <IndividualPokemon
-        key={pokemon.id}
-        pokemon={pokemon}
-        nextPokemon={nextPokemon}
-        prevPokemon={prevPokemon}
-      />
-    );
-  });
+  const mappedPokemonList = pokemonList.map((pokemon) => (
+    <IndividualPokemon props={{ pokemon }} key={pokemon.id} />
+  ));
 
   const transitions = useTransition(
     mappedPokemonList,
