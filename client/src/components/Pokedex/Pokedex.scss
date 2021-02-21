@@ -1,13 +1,15 @@
-$small: 576px;
+$xs: 360px;
 $medium: 768px;
 $large: 992px;
+
+$smHeight: 568px;
 
 .pokedex-container {
   position: fixed;
   width: 100vw;
   top: 10rem;
   left: 0;
-  @media screen and (max-width: $small) {
+  @media screen and (max-width: $medium) {
     top: 8rem;
   }
 }
@@ -50,15 +52,22 @@ $large: 992px;
     3% 47%
   );
   border-radius: 5px 5px 0 5px;
-  @media screen and (max-width: $small) {
+  @media screen and (max-width: $medium) {
     height: 52.5rem;
     top: 4rem;
+  }
+  @media screen and (max-height: $smHeight) {
+    height: 47rem;
   }
 
   .prevnext-buttons {
     position: absolute;
     left: 3.8rem;
     bottom: 3rem;
+    @media screen and (max-width: $medium) {
+      bottom: 0.4rem;
+      left: 0rem;
+    }
   }
 
   .prevnext-button {
@@ -74,6 +83,11 @@ $large: 992px;
     &:active {
       color: dodgerblue;
       background: white;
+    }
+    @media screen and (max-width: $medium) {
+      padding: 2.5rem 1.5rem;
+      margin-left: 0.4rem;
+      border-radius: 0.5rem;
     }
   }
 
@@ -110,18 +124,31 @@ $large: 992px;
     &:hover {
       color: rgb(106, 11, 11);
     }
+    @media screen and (max-width: $medium) {
+      right: 0.1rem;
+      top: 0.1rem;
+      box-shadow: none;
+    }
   }
 
   .name {
     height: 6.2rem;
     font-size: 3.7rem;
     text-align: center;
-    margin-top: 0.5rem;
     margin-bottom: 0rem;
     letter-spacing: 0.7rem;
     margin-left: 0.7rem;
     cursor: default;
     color: rgb(31, 31, 31);
+    @media screen and (max-width: $medium) {
+      font-size: 3rem;
+      margin-top: 0;
+      letter-spacing: 0.5rem;
+    }
+    @media screen and (max-height: $smHeight) {
+      font-size: 2.8rem;
+      height: 4rem;
+    }
   }
 
   .spritebackground {
@@ -131,7 +158,7 @@ $large: 992px;
     background: rgba(28, 73, 255, 0.461);
     width: 82%;
     margin-bottom: -2rem;
-    @media screen and (max-width: $small) {
+    @media screen and (max-width: $medium) {
       height: 18rem;
     }
   }
@@ -147,16 +174,24 @@ $large: 992px;
   }
 
   .infobox {
-    margin: 0 4rem;
     padding: 0.8rem 2rem;
     font-size: 1.4rem;
     line-height: 1.9rem;
     background: rgba(255, 255, 255, 0.25);
     height: 22rem;
+    width: 82%;
+    margin-left: 50%;
+    transform: translateX(-50%);
     cursor: default;
     overflow: scroll;
-    @media screen and (max-width: $small) {
+    @media screen and (max-width: $medium) {
       height: 17rem;
+    }
+    @media screen and (max-width: $medium) {
+      padding: 0.8rem 0.5rem;
+    }
+    @media screen and (max-height: $smHeight) {
+      height: 13rem;
     }
   }
 
@@ -172,6 +207,9 @@ $large: 992px;
     width: 8.5rem;
     &:hover {
       background: rgba(255, 255, 255, 0.276);
+    }
+    @media screen and (max-width: $xs) {
+      width: 7rem;
     }
   }
 
@@ -199,6 +237,10 @@ $large: 992px;
     margin-top: 2.4rem;
     margin-right: 4rem;
     font-weight: bold;
+
+    @media screen and (max-width: $xs) {
+      margin-right: 2rem;
+    }
   }
 
   .pokemonsprite-sprite {
