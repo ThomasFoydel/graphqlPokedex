@@ -1,3 +1,6 @@
+$xs: 360;
+$small: 576px;
+
 .navbar {
   z-index: 5;
   height: 7rem;
@@ -6,40 +9,56 @@
   position: fixed;
   top: 0;
   width: 100vw;
-}
+  .title {
+    font-size: 4rem;
+    margin-top: -0.5rem;
+    letter-spacing: 2rem;
+    margin-left: 2rem;
+    cursor: default;
+    @media screen and (max-width: $small) {
+      letter-spacing: 1rem;
+    }
+    @media screen and (max-width: $xs) {
+      letter-spacing: 0.3rem;
+      margin-left: 0.5rem;
+    }
+  }
 
-.navbar-left {
-  display: flex;
-}
+  .left {
+    display: flex;
+  }
 
-.navbar-pokeball {
-  width: 5.5rem;
-  height: 5.5rem;
-  margin-left: 1.4rem;
-  margin-top: 0.8rem;
-}
+  .pokeball {
+    width: 5.5rem;
+    height: 5.5rem;
+    margin-left: 1.4rem;
+    margin-top: 0.8rem;
+  }
 
-.navbar-item {
-  font-size: 4rem;
-  margin-top: -0.5rem;
-  letter-spacing: 2rem;
-  margin-left: 2rem;
-  cursor: default;
-}
+  .portfoliolink {
+    position: absolute;
+    right: 1.7rem;
+    top: 4.7rem;
+    color: rgb(177, 177, 177);
+    cursor: default;
 
-.navbar-portfoliolink {
-  position: absolute;
-  right: 1.7rem;
-  top: 4.7rem;
-  color: rgb(177, 177, 177);
-  cursor: default;
+    a {
+      color: rgb(186, 30, 30);
+      font-weight: bold;
+      transition: all 0.2s ease;
+      &:hover {
+        color: red;
+      }
+    }
 
-  a {
-    color: rgb(186, 30, 30);
-    font-weight: bold;
-    transition: all 0.2s ease;
-    &:hover {
-      color: red;
+    @media screen and (max-width: $small) {
+      margin-left: 4rem;
+      font-size: 1rem;
+    }
+
+    @media screen and (max-width: $xs) {
+      margin-left: 8rem;
+      font-size: 0.8rem;
     }
   }
 }
