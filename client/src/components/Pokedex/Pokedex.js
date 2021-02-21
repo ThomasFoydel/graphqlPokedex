@@ -106,16 +106,6 @@ export default function Pokedex({ props: { pokemonData, pokemonList } }) {
           </div>
 
           <div>
-            <b>Resistant To:</b>{' '}
-            {resistant?.map((individualResistance, i) => (
-              <span key={i}>
-                {individualResistance}
-                {i < resistant.length - 1 ? ', ' : ''}
-              </span>
-            ))}
-          </div>
-
-          <div>
             <b>Weaknesses:</b>{' '}
             {weaknesses &&
               weaknesses.map((weakness, i) => (
@@ -124,6 +114,16 @@ export default function Pokedex({ props: { pokemonData, pokemonList } }) {
                   {i < weaknesses.length - 1 ? ', ' : ''}
                 </span>
               ))}
+          </div>
+
+          <div>
+            <b>Resistant To:</b>{' '}
+            {resistant?.map((individualResistance, i) => (
+              <span key={i}>
+                {individualResistance}
+                {i < resistant.length - 1 ? ', ' : ''}
+              </span>
+            ))}
           </div>
 
           <div>

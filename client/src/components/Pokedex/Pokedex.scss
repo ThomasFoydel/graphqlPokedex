@@ -20,6 +20,7 @@ $smHeight: 568px;
   margin-left: 50%;
   box-shadow: 2rem 2rem 6rem rgba(0, 0, 0, 0.45),
     -1rem -1rem 6rem rgba(255, 255, 255, 0.12);
+  border-radius: 5px;
 }
 
 .loading-info {
@@ -34,7 +35,7 @@ $smHeight: 568px;
   max-width: 100vw;
   height: 62.5rem;
   width: 46rem;
-  max-width: 95vw;
+  max-width: 92vw;
   padding: 0.5rem;
   overflow: hidden;
   clip-path: polygon(
@@ -51,7 +52,7 @@ $smHeight: 568px;
     0 50%,
     3% 47%
   );
-  border-radius: 5px 5px 0 5px;
+  border-radius: 5px;
   @media screen and (max-width: $medium) {
     height: 52.5rem;
     top: 4rem;
@@ -219,7 +220,7 @@ $smHeight: 568px;
     text-align: center;
     font-weight: bold;
     margin-left: 50%;
-    width: 160%;
+    width: 100%;
     transform: translateX(-50%);
   }
 
@@ -246,6 +247,10 @@ $smHeight: 568px;
   .pokemonsprite-sprite {
     height: 20rem;
     margin-top: -44rem;
+    @media screen and (max-width: $medium) {
+      height: 18rem;
+      margin-top: -16rem;
+    }
   }
 
   .pokemonsprite-animated {

@@ -38,9 +38,10 @@ $small: 576px;
   .portfoliolink {
     position: absolute;
     right: 1.7rem;
-    top: 4.7rem;
+    top: 4.2rem;
     color: rgb(177, 177, 177);
     cursor: default;
+    font-size: 1.9rem;
 
     a {
       color: rgb(186, 30, 30);
@@ -53,7 +54,8 @@ $small: 576px;
 
     @media screen and (max-width: $small) {
       margin-left: 4rem;
-      font-size: 1rem;
+      top: 4.7rem;
+      font-size: 1.3rem;
     }
 
     @media screen and (max-width: $xs) {
