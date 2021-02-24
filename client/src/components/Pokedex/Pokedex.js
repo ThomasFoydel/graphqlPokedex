@@ -166,7 +166,9 @@ export default function Pokedex({ props: { pokemonData, pokemonList } }) {
                   updateState({
                     type: 'CHANGE_CURRENT_POKEMON',
                     payload: {
-                      currentPokemonNumber: evolution.id,
+                      currentPokemonNumber: `${evolution.id < 100 ? 0 : ''}${
+                        evolution.id < 10 ? 0 : ''
+                      }${evolution.id}`,
                     },
                   })
                 }
