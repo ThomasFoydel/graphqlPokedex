@@ -18,15 +18,19 @@
 <p>This project can be found deployed <a href='https://graphqlpokedex.herokuapp.com/'>here</a></p>
 <p>The code for this project can be found <a href='https://github.com/ThomasFoydel/graphqlPokedex'>here</a></p>
 <p>The code for my old project can be found <a href="https://github.com/ThomasFoydel/oldpokedex">here</a><p>
-<p>The code for the graphql server by Lucas Bento that inspired these projects can be found <a href="https://github.com/lucasbento/graphql-pokemon">here</a></p>
+<p>The code for the relay graphql server by Lucas Bento that inspired these projects can be found <a href="https://github.com/lucasbento/graphql-pokemon">here</a></p>
 <hr/>
 <h2>Installation</h2>
-<p>Download the repo and from the root folder of the project run the command</p> 
-    `npm run install-all`
+<p>Download the repo and from the root folder of the project run the command</p>
+
+    npm run install-all
+
 <hr/>
 <h2>Usage</h2>
 <p>To run it locally, from the root folder of the project, run the command</p>
-    `npm run dev`
+
+    npm run dev
+
 <p>This will run the front end on <a href='http://localhost:3000'>http://localhost:3000</a></p>
 <p>And the graphql playground can be accessed at <a href='http://localhost:4000/graphql'>http://localhost:4000/graphql</a><p>
 <p>You'll need to set up your mongoDB database with the JSON data from Bento's project in it (fix jigglypuff's evolution data, though) and then use the connection string from mongoDB as an environment variable named MONGO_URI (or just replace the environment variable with your connection string if you aren't deploying or pushing that code anywhere). Alternatively you could change the graphql/resolver to serve up the JSON data and remove the mongoose.connection code wrapping the app.listen in the main server file, src/index.js<p>
