@@ -11,7 +11,6 @@ const PokemonSprite = ({ name, pokemonNumber }) => {
   const transitions = useTransition(
     slides[index],
     (item) => {
-      console.log(item.id);
       return item.id;
     },
     {

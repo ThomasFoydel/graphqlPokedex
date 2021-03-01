@@ -10,7 +10,8 @@ export const resolvers = {
     pokemon: async (_, { id }) => {
       if (!id) return;
       const foundPokemon = await Pokemon.findOne({ id });
-      return foundPokemon;
+      const copy = { ...foundPokemon._doc };
+      return copy;
     },
   },
 };
